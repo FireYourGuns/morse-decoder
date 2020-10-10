@@ -49,19 +49,22 @@ function decode(expr) {
 
     for (i = 0; i < New_array.length; i++) {
       var Z = New_array[i].split('');
-      if (New_array[i].split('') === '**********') {Frase += ' '}
-      Code = '';
-      for (var j=1; j<6; j++) {
-        var Twix = Z.splice(0,2).join('');
-        if (Twix == 10) {
-          Code += ".";
+        if (New_array[i] == '**********') {
+          Frase += ' ';
+        } else {
+                    Code = '';
+                    for (var j=1; j<6; j++) {
+                        var Twix = Z.splice(0,2).join('');
+                        if (Twix == 10) {
+                        Code += ".";
+                        }
+                        if (Twix == 11) {
+                        Code += "-";
+                        }
+                    }
+                Frase += MORSE_TABLE[Code];
+            }
         }
-        if (Twix == 11) {
-          Code += "-";
-        }
-      }
-      Frase += MORSE_TABLE[Code];
-    }
 
     return Frase;
 }

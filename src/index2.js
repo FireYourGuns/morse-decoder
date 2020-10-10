@@ -38,38 +38,38 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    var Mas = expr.split("");
-    var New_array = [];
-    var x = Mas.length/10;
-    var Code = '';
-    var Frase = '';
-    for (var i = 1; i <= x; i++) {
-        New_array.push(Mas.splice(0,10).join(""));
-    }
+  var Mas = expr.split("");
+  var New_array = [];
+  var x = Mas.length/10;
+  var Code = '';
+  var Frase = '';
+  for (var i = 1; i <= x; i++) {
+      New_array.push(Mas.splice(0,10).join(""));
+  }
 
-    for (i = 0; i < New_array.length; i++) {
-      var Z = New_array[i].split('');
-      if (New_array[i].split('') === '**********') {Frase += ' '}
-      Code = '';
-      for (var j=1; j<6; j++) {
-        var Twix = Z.splice(0,2).join('');
-        if (Twix == 10) {
-          Code += ".";
-        }
-        if (Twix == 11) {
-          Code += "-";
-        }
+  for (i = 0; i < New_array.length; i++) {
+    var Z = New_array[i].split('');
+      if (New_array[i] == '**********') {
+        Frase += ' ';
+      } else {
+                  Code = '';
+                  for (var j=1; j<6; j++) {
+                      var Twix = Z.splice(0,2).join('');
+                      if (Twix == 10) {
+                      Code += ".";
+                      }
+                      if (Twix == 11) {
+                      Code += "-";
+                      }
+                  }
+              Frase += MORSE_TABLE[Code];
+          }
       }
-      Frase += MORSE_TABLE[Code];
-    }
 
-    /*
-    */
-
-    return Frase;
+  return Frase;
 }
  
-    console.log(decode('000000001000000000110000111111'))
+    console.log(decode('**********'))
   
    /* function decode(expr) {
       var Mas = expr.toString().split("");
